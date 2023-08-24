@@ -2,8 +2,6 @@
 iptables -I INPUT -s 10.0.0.0/8 -p tcp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 10.0.0.0/8 -p udp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 100.64.0.0/16 -p tcp --dport 5060 -j ACCEPT
-iptables -I INPUT -s 100.64.0.0/16 -p tcp --dport 5060 -j ACCEPT
-iptables -I INPUT -s 100.64.0.0/16 -p udp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 100.64.0.0/16 -p udp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 100.66.0.0/16 -p tcp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 100.66.0.0/16 -p udp --dport 5060 -j ACCEPT
