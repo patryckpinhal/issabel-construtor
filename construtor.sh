@@ -96,7 +96,8 @@ done
 
 # Incio preparação Linux
 
-yum install wget mtr vim mlocate nmap tcpdump mc nano lynx rsync minicom screen htop subversion deltarpm issabel-callcenter -y
+# yum install wget mtr vim mlocate nmap tcpdump mc nano lynx rsync minicom screen htop subversion deltarpm issabel-callcenter -y
+yum install wget vim htop -y
 updatedb
 yum -y update && yum -y upgrade
 
@@ -141,17 +142,24 @@ clear
 # Fim preparando sngrep
 
 ### FAIL2BAN
-
 # Inicio preparando banir.sh
-
-wget -c https://raw.githubusercontent.com/patryckpinhal/issabel-construtor/main/banir.sh
-chmod +x banir.sh
-chown -R root:root banir.sh
-int5_esc=$(echo $int5 | sed 's/\//\\\//g')
-sed -i "s/trocarip/$int5_esc/g" /home/script/banir.sh
-sed -i "s/trocarporta/$int6/g" /home/script/banir.sh
-
+# wget -c https://raw.githubusercontent.com/patryckpinhal/issabel-construtor/main/banir.sh
+# chmod +x banir.sh
+# chown -R root:root banir.sh
+# int5_esc=$(echo $int5 | sed 's/\//\\\//g')
+# sed -i "s/trocarip/$int5_esc/g" /home/script/banir.sh
+# sed -i "s/trocarporta/$int6/g" /home/script/banir.sh
 # Fim preparando banir.sh
+
+### IPTABLES
+
+# Inicio preparando iptables.sh
+
+wget -c https://raw.githubusercontent.com/patryckpinhal/issabel-construtor/main/iptables.sh
+chmod +x iptables.sh
+chown -R root:root iptables.sh
+
+# Fim preparando iptables.sh
 
 ### RESETF2B
 
