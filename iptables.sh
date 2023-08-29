@@ -20,7 +20,7 @@ iptables -A INPUT -p tcp --dport 5060 -j DROP
 iptables -A INPUT -p udp --dport 5060 -j DROP
 
 echo Bloqueando ping
-iptables -A INPUT -p icmp -j DROP
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 
 echo Liberando range de ips utilizados por clientes
 wget -O - https://raw.githubusercontent.com/patryckpinhal/issabel-construtor/main/ips-liberados.sh | bash
