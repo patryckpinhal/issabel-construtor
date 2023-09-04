@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 
+while true; do
+
 read -p "# Digite o IP utilizado para acesso: " int1
 read -p "# Digite a Porta SSH utilizada: " int2
 read -p "# Digite o IP do servidor SNMP: " int3
@@ -13,7 +15,7 @@ echo " - Porta SSH utilizada........= $int2 "
 echo " - IP servidor SNMP...........= $int3 "
 echo " - IP servidor Antivirus......= $int4 "
 
-read -p "Caso as informações estam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
+read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
 
 	if [[ $int66 == "nao" ]]; then
 		echo "Reiniciando o script!"
