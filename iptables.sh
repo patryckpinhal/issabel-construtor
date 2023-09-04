@@ -1,15 +1,41 @@
 #!/bin/bash
 #
 
-read -p "# Digite o IP: " int1
-read -p "# Digite a Porta SSH: " int2
+read -p "# Digite o IP utilizado para acesso: " int1
+read -p "# Digite a Porta SSH utilizada: " int2
+read -p "# Digite o IP do servidor SNMP: " int3
+read -p "# Digite o IP do servidor Antivirus: " int4
+
+clear
+
+echo " - IP utilizado para acesso...= $int1 "
+echo " - Porta SSH utilizada........= $int2 "
+echo " - IP servidor SNMP...........= $int3 "
+echo " - IP servidor Antivirus......= $int4 "
+
+read -p "Caso as informações estam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
+
+	if [[ $int66 == "nao" ]]; then
+		echo "Reiniciando o script!"
+
+	elif [[ $int66 == "sim" ]]; then
+		echo "Continuando o script!"
+		break
+	else
+		echo "Resposta inválida. Por favor, digite 'sim' ou 'nao'."
+	fi
+done
 
 iptables -F
-echo Permitindo IP $int1
+echo Permitindo o IP de acesso: $int1
 iptables -A INPUT -s $int1 -j ACCEPT
 
 echo Liberando ping prtg
-iptables -A INPUT -p icmp -s 10.100.22.160/28 -j ACCEPT
+iptables -A INPUT -p icmp -s $int3 -j ACCEPT
+
+iptables -A INPUT -s $int4 -p tcp --dport 16761 -j ACCEPT
+iptables -A INPUT -s $int4 -p udp --dport 16761 -j ACCEPT
+iptables -A INPUT -p icmp -s $int4 -j ACCEPT
 
 echo Bloqueando qualquer requisição na porta $int2
 iptables -A INPUT -p tcp --dport $int2 -j DROP
