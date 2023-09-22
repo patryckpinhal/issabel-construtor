@@ -10,13 +10,13 @@ read -p "# Digite o IP do servidor SNMP 02: " int5
 read -p "# Digite o IP do servidor Antivirus: " int4
 
 clear
-
+echo " "
 echo " - IP utilizado para acesso...= $int1 "
 echo " - Porta SSH utilizada........= $int2 "
 echo " - IP servidor SNMP 01........= $int3 "
 echo " - IP servidor SNMP 02........= $int5 "
 echo " - IP servidor Antivirus......= $int4 "
-
+echo " "
 read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
 
 	if [[ $int66 == "nao" ]]; then
