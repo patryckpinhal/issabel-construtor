@@ -5,14 +5,16 @@ while true; do
 
 read -p "# Digite o IP utilizado para acesso: " int1
 read -p "# Digite a Porta SSH utilizada: " int2
-read -p "# Digite o IP do servidor SNMP: " int3
+read -p "# Digite o IP do servidor SNMP 01: " int3
+read -p "# Digite o IP do servidor SNMP 02: " int5
 read -p "# Digite o IP do servidor Antivirus: " int4
 
 clear
 
 echo " - IP utilizado para acesso...= $int1 "
 echo " - Porta SSH utilizada........= $int2 "
-echo " - IP servidor SNMP...........= $int3 "
+echo " - IP servidor SNMP 01........= $int3 "
+echo " - IP servidor SNMP 02........= $int5 "
 echo " - IP servidor Antivirus......= $int4 "
 
 read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
@@ -34,6 +36,7 @@ iptables -A INPUT -s $int1 -j ACCEPT
 
 echo Liberando ping prtg
 iptables -A INPUT -p icmp -s $int3 -j ACCEPT
+iptables -A INPUT -p icmp -s $int5 -j ACCEPT
 
 iptables -A INPUT -s $int4 -p tcp --dport 16761 -j ACCEPT
 iptables -A INPUT -s $int4 -p udp --dport 16761 -j ACCEPT
