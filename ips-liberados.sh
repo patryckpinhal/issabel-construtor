@@ -803,9 +803,4 @@ iptables -I INPUT -s 45.231.136.0/22 -p tcp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 45.231.136.0/22 -p udp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 45.70.136.0/22 -p tcp --dport 5060 -j ACCEPT
 iptables -I INPUT -s 45.70.136.0/22 -p udp --dport 5060 -j ACCEPT
-iptables -I INPUT -s 51.161.9.223 -p tcp --dport 5060 -j ACCEPT
-iptables -I INPUT -s 51.161.9.223 -p udp --dport 5060 -j ACCEPT
-ip6tables -I INPUT -s 2607:5300:205:200::1a33 -p tcp --dport 5060 -j ACCEPT
-ip6tables -I INPUT -s 2607:5300:205:200::1a33 -p udp --dport 5060 -j ACCEPT
-
 service iptables save
