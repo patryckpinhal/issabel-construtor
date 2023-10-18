@@ -74,6 +74,18 @@ echo Liberando range de ips utilizados por clientes
 wget -O - https://raw.githubusercontent.com/patryckpinhal/issabel-construtor/main/ips-liberados.sh | bash
 
 
-#Liberar ips particulares
-cd /home/script/
-./ips-cliente.sh
+#Validar se existe o arquivo de ips particulares, caso não, criar
+
+validar="/home/script/ips-clientes.sh"
+
+if [ -e "$validar" ]; then
+    echo "O arquivo $validar já existe."
+        cd /home/script/
+        ./ips-clientes.sh
+else
+    echo "#!/bin/bash" > "$validar"
+    echo "#" >> "$validar"
+    echo "#iptables -I INPUT -s X.X.X.X -p tcp --dport XXXX -j ACCEPT" >> "$validar"
+    chmod +x "$validar"
+    echo "O arquivo $validar foi criado com sucesso."
+fi
