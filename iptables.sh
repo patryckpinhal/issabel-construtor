@@ -38,7 +38,7 @@ iptables -A INPUT -s $int1 -j ACCEPT
 
 #Acesso Ansible
 echo Permitindo IP do servidor Ansible: $int5
-iptables -A INPUT -s $int5 -p tcp --dport 22000 -j ACCEPT
+iptables -A INPUT -s $int5 -p tcp --dport $int2 -j ACCEPT
 
 #Ping PRTG
 
