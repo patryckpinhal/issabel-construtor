@@ -4,18 +4,18 @@
 while true; do
 
 read -p "# Digite o IP utilizado para acesso Life: " int1
-read -p "# Digite o IP utilizado para acesso TP: " int4
+#read -p "# Digite o IP utilizado para acesso TP: " int4
 read -p "# Digite a Porta SSH utilizada: " int2
 read -p "# Digite o IP do servidor SNMP: " int3
-read -p "# Digite o IP do servidor Ansible: " int5
+#read -p "# Digite o IP do servidor Ansible: " int5
 
 clear
 echo " "
 echo " - IP utilizado para acesso Life...= $int1 "
-echo " - IP utilizado para acesso TP.....= $int4 "
+#echo " - IP utilizado para acesso TP.....= $int4 "
 echo " - Porta SSH utilizada.............= $int2 "
 echo " - IP servidor SNMP................= $int3 "
-echo " - IP servidor Ansible.............= $int5 "
+#echo " - IP servidor Ansible.............= $int5 "
 echo " "
 read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
 
@@ -35,11 +35,11 @@ iptables -F
 #Acessos VPN
 echo Permitindo o IP de acesso: $int1
 iptables -A INPUT -s $int1 -j ACCEPT
-iptables -A INPUT -s $int4 -j ACCEPT
+#iptables -A INPUT -s $int4 -j ACCEPT
 
 #Acesso Ansible
-echo Permitindo IP do servidor Ansible: $int5
-iptables -A INPUT -s $int5 -p tcp --dport $int2 -j ACCEPT
+#echo Permitindo IP do servidor Ansible: $int5
+#iptables -A INPUT -s $int5 -p tcp --dport $int2 -j ACCEPT
 
 #Ping PRTG
 
