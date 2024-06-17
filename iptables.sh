@@ -8,6 +8,7 @@ read -p "# Digite o IP utilizado para acesso Life: " int1
 read -p "# Digite a Porta SSH utilizada: " int2
 read -p "# Digite o IP do servidor SNMP: " int3
 #read -p "# Digite o IP do servidor Ansible: " int5
+read -p "# Digite o IP do servidor SIEM: " int6
 
 clear
 echo " "
@@ -16,6 +17,8 @@ echo " - IP utilizado para acesso Life...= $int1 "
 echo " - Porta SSH utilizada.............= $int2 "
 echo " - IP servidor SNMP................= $int3 "
 #echo " - IP servidor Ansible.............= $int5 "
+echo " - IP servidor SIEM................= $int6 "
+
 echo " "
 read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corrigir, digite 'nao': " int66
 
@@ -42,7 +45,6 @@ iptables -A INPUT -s $int1 -j ACCEPT
 #iptables -A INPUT -s $int5 -p tcp --dport $int2 -j ACCEPT
 
 #Ping PRTG
-
 echo Liberando ping prtg $int3
 iptables -A INPUT -p icmp -s $int3 -j ACCEPT
 
@@ -50,6 +52,12 @@ iptables -A INPUT -p icmp -s $int3 -j ACCEPT
 #iptables -A INPUT -s $int4 -p tcp --dport 16761 -j ACCEPT
 #iptables -A INPUT -s $int4 -p udp --dport 16761 -j ACCEPT
 #iptables -A INPUT -p icmp -s $int4 -j ACCEPT
+
+#Acesso SIEM
+echo Liberando IP $int6 do SIEM para acesso as portas 1515/tcp, 1514/tcp e 55000/tcp
+iptables -A INPUT -s $int6 -p tcp --dport 1515 -j ACCEPT
+iptables -A INPUT -s $int6 -p tcp --dport 1514 -j ACCEPT
+iptables -A INPUT -s $int6 -p tcp --dport 55000 -j ACCEPT
 
 #Liberação localhost
 iptables -A INPUT -s 127.0.0.1 -j ACCEPT
