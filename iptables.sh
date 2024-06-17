@@ -34,6 +34,7 @@ read -p "Caso as informações estejam corretas, digite 'sim', caso deseja corri
 done
 
 iptables -F
+iptables -X
 
 #Acessos VPN
 echo Permitindo o IP de acesso: $int1
